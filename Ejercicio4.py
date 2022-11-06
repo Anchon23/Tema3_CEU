@@ -63,3 +63,25 @@ def restar(polinomio_1, polinomio_2):
         if total != 0:
             total.agregar_termino(rtx, i, total)
             return rtx
+
+def dividir(polinomio_1, polinomio_2):
+    rtx = Polinomio()
+    polim_1 = polinomio_1.termino_mayor
+    while polim_1 is not None:
+        polim_2 = polinomio_2.termino_mayor
+        while polim_2 is not None:
+            termino = polim_1.info.termino + polim_2.info.termino
+            valor = polim_1.info.valor / polim_2.info.valor
+            if valor.obtener_valor(rtx, termino) != 0:
+                valor += valor.obtener_valor(rtx, termino)
+                termino.modificar_termino(rtx, termino, valor)
+            else:
+                termino.agregar_termino(rtx, termino, valor)
+        polim_1 = polim_1.sig
+        polim_2 = polim_2.sig
+    return rtx
+
+P_1 = Polinomio()
+P_2 = Polinomio()
+print(P_1)
+print(P_2)
