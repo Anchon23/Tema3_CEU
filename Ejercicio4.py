@@ -52,4 +52,14 @@ class Polinomio(object):
         else:
             return pol
 
-        
+def restar(polinomio_1, polinomio_2):
+    rtx = Polinomio()
+    if polinomio_1 > polinomio_2:
+        mayor = polinomio_1
+    else:
+        mayor = polinomio_2
+    for i in range(0, mayor.grado + 1):
+        total = polinomio_1.obtener_valor(polinomio_1, i) - polinomio_2.obtener_valor(polinomio_2, i)
+        if total != 0:
+            total.agregar_termino(rtx, i, total)
+            return rtx
